@@ -55,4 +55,27 @@ The configuration details of each machine may be found below:
 | Web-03   | Server      | 10.0.0.7   | Linux            |
 | Elk-VM   | Elk Server  | 10.1.0.4   | Linux            |
 
+### Access Policies
+
+The machines on the internal network are not exposed to the public Internet. 
+
+Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- Add whitelisted IP addresses:- Public IP address which changes every time when the VM is on/off: Public IP 23.99.250.176
+
+Machines within the network can only be accessed by SSH Port 22.
+
+Which machine did you allow to access your ELK VM? What was its IP address?
+
+- The ELK-Server is only accessible by SSH from the JumpBox and through web access from Personal IP Address.
+
+| Name     | Publicly Accessible   | Allowed IP Addresses                             | 
+|----------|-----------------------|--------------------------------------------------|
+| Jump Box | Yes Via SSH           | 10.0.0.4                                         |
+| Web-01   | Yes Thru Load Balancer| 168.61.182.25(Red-Team-LB) 10.0.0.5              |                              
+| Web-02   | Yes Thru Load Balancer| 168.61.182.25(Red-Team-LB) 10.0.0.5              |                                          
+| Web-03   | Yes Thru Load Balancer| 168.61.182.25(Red-Team-LB) 10.0.0.5.             |                                                      
+| Elk-VM   | NO                    | SSH 10.1.0.4-JumpBox HTTP Port 5601 Personal IP  |
+                                  
+
+
 

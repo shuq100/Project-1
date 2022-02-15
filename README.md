@@ -111,4 +111,46 @@ These Beats allow us to collect the following information from each machine:
 -	Filebeat monitors log files or specific locations, collects log   events, and forwards them either to Elasticsearch or Logstash for indexing.
 -	Metricbeat collects metrics from the operating system and from services running on the server.
 
+### Using the Playbook
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+
+SSH into the control node and follow the steps below:
+
+-	SSH into the control node and follow the steps below:
+-	Copy the filebeat-config.yml and metricbeat-config.yml file to 	/etc/ansible/files.
+-	Update the configuration files to include the Private IP of the 	ELK-Server to the ElasticSearch and Kibana Sections of the 	Configuration File
+-	Run the playbook and navigate to ELK-Server-	PublicIP:5601/app/kibana to check that the installation worked as 	expected.
+
+
+Which file is the playbook?
+-	elk-playbook.yml - used to install ELK Server
+-	filebeat-playbook.yml - Used to install and configure Filebeat on 	Elk Server and DVWA servers
+-	metricbeat-playbook.yml - Used to install and configure Metricbeat 	on Elk Server and DVWA servers
+
+Where do you copy it?
+-	/etc/ansible/
+
+Which file do you update to make Ansible run the playbook on a specific machine? 
+-	/etc/ansible/hosts.cfg
+
+How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+
+-	In /etc/ansible/hosts you tell it where you want each to be installed Elk Servers or Filebeat
+
+Which URL do you navigate to in order to check that the ELK server is running?
+
+-	Navigate to http://[your.VM.IP]:5601/app/kibana. Use the public IP address of the ELK server that you created.
+
+Provide the specific commands the user will need to run to download the playbook, update the files, etc.
+
+1.	ssh azadmin@JumpBox(PrivateIP)
+2.	sudo docker container list -a - Locate the ansible container
+3.	sudo docker start (Name)
+4.	sudo docker attach (Name)
+5.	cd /etc/ansible
+6.	ansible-playbook elk-playbook.yml (Installs and Configures ELK-Server)
+7.	cd /etc/ansible/
+8.	ansible-playbook beats-playbook.yml (Installs and Configures Beats)
+9.	Open a new browser on Personal Workstation, navigate to (ELK-Server-PublicIP:5601/app/kibana) - This will bring up Kibana Web Portal.
+
 

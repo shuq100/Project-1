@@ -77,5 +77,38 @@ Which machine did you allow to access your ELK VM? What was its IP address?
 | Elk-VM   | NO                    | SSH 10.1.0.4-JumpBox HTTP Port 5601 Personal IP  |
                                   
 
+### Elk Configuration
+
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
+What is the main advantage of automating configuration with Ansible?
+- The advantage of automating the configuration process is that this process makes it easy to deploy to multiple servers quickly without having to physically touch individual servers.
+
+The playbook implements the following tasks:
+
+-	Install Docker.io and python pip3
+-	Install Docker
+-	Command: sysctl -w vm.max_map_count=262144
+-	Launch docker container: elk
+
+The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+
+![image](https://user-images.githubusercontent.com/99371844/153986156-90ad3bb7-be32-460c-9689-984bded5aad7.png)
+
+### Target Machines & Beats
+This ELK server is configured to monitor the following machines:
+List the IP addresses of the machines you are monitoring.
+
+-	Web-1	IP Address 10.0.0.5
+-	Web-2	IP Address 10.0.0.6
+
+We have installed the following Beats on these machines:
+Specify which Beats you successfully installed
+
+-	Filebeat
+-	Metricbeat
+
+These Beats allow us to collect the following information from each machine:
+-	Filebeat monitors log files or specific locations, collects log   events, and forwards them either to Elasticsearch or Logstash for indexing.
+-	Metricbeat collects metrics from the operating system and from services running on the server.
 
 
